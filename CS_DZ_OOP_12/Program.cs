@@ -35,16 +35,16 @@ namespace CS_DZ_OOP_12
                 switch (userInput)
                 {
                     case "1":
-                        _aviarys.ShowDogs();
+                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
                         break;
                     case "2":
-                        _aviarys.ShowTigers();
+                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
                         break;
                     case "3":
-                        _aviarys.ShowMonkeys();
+                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
                         break;
                     case "4":
-                        _aviarys.ShowSnakes();
+                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
                         break;
                     case "5":
                         isWork = false;
@@ -61,24 +61,24 @@ namespace CS_DZ_OOP_12
         private Animal _monkeys = new Animal("Обезьяны", "Мальчики", "Кричат", 10) ;
         private Animal _snakes = new Animal("Змеи", "Девочки", "Сидят тихо", 30);
 
-        public void ShowDogs()
+        public void ShowAnimals(int userInput)
         {
-            ShowInfo(_dogs);
-        }
-
-        public void ShowTigers()
-        {
-            ShowInfo(_tigers);
-        }
-
-        public void ShowMonkeys()
-        {
-            ShowInfo(_monkeys);
-        }
-
-        public void ShowSnakes()
-        {
-            ShowInfo(_snakes);
+            if(userInput == 1)
+            {
+                ShowInfo(_dogs);
+            }
+            else if(userInput == 2)
+            {
+                ShowInfo(_tigers);
+            }
+            else if(userInput == 3)
+            {
+                ShowInfo(_monkeys);
+            }
+            else if(userInput == 4)
+            {
+                ShowInfo(_snakes);
+            }
         }
 
         private void ShowInfo(Animal animals)
