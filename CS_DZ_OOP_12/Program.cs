@@ -65,13 +65,6 @@ namespace CS_DZ_OOP_12
             }
             Console.ReadKey();
         }
-
-        private void ShowInfo(Animal animals)
-        {
-            Console.Clear();
-            
-            Console.ReadKey();
-        }
     }
 
     class Animal
