@@ -28,25 +28,16 @@ namespace CS_DZ_OOP_12
             while (isWork)
             {
                 Console.Clear();
-                Console.WriteLine("Для того что бы подойти к вольеру и посмотреть введите номер от 1 до 4");
-                Console.WriteLine("Для выхода введите 5");
+                Console.WriteLine("Для того что бы подойти к вольеру введите 1");
+                Console.WriteLine("Для выхода введите 2");
                 string userInput = Console.ReadLine();
 
                 switch (userInput)
                 {
                     case "1":
-                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
+                        _aviarys.ShowAnimals();
                         break;
                     case "2":
-                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
-                        break;
-                    case "3":
-                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
-                        break;
-                    case "4":
-                        _aviarys.ShowAnimals(Convert.ToInt32(userInput));
-                        break;
-                    case "5":
                         isWork = false;
                         break;
                 }
@@ -56,35 +47,29 @@ namespace CS_DZ_OOP_12
 
     class Aviarys
     {
-        private Animal _dogs = new Animal ("Собаки", "Мальчики", "Лают", 6);
-        private Animal _tigers = new Animal("Тигрицы", "Девочки", "Рычат", 3) ;
-        private Animal _monkeys = new Animal("Обезьяны", "Мальчики", "Кричат", 10) ;
-        private Animal _snakes = new Animal("Змеи", "Девочки", "Сидят тихо", 30);
-
-        public void ShowAnimals(int userInput)
+        private List<Animal> _aviarys = new List<Animal>() { new Animal("Собаки", "Мальчики", "Лают", 6), new Animal("Тигрицы", "Девочки", "Рычат", 3),
+                                        new Animal("Обезьяны", "Мальчики", "Кричат", 10), new Animal("Змеи", "Девочки", "Сидят тихо", 30) };
+        
+        public void ShowAnimals()
         {
-            if(userInput == 1)
+            Console.Clear();
+            Console.WriteLine("В зоопарке сейчас " + _aviarys.Count + " вольера");
+            Console.Write("Введите номер вальера к которому нужно подойти: ");
+            if(int.TryParse(Console.ReadLine(), out int userInput) && userInput > 0 && userInput <= _aviarys.Count)
             {
-                ShowInfo(_dogs);
+                Console.WriteLine("В этом вальере у нас - " + _aviarys[userInput - 1].Name + " это " + _aviarys[userInput - 1].Genger + " их " + _aviarys[userInput - 1].Count + " и они " + _aviarys[userInput - 1].Voice);
             }
-            else if(userInput == 2)
+            else
             {
-                ShowInfo(_tigers);
+                Console.WriteLine("Ввод не корректный");
             }
-            else if(userInput == 3)
-            {
-                ShowInfo(_monkeys);
-            }
-            else if(userInput == 4)
-            {
-                ShowInfo(_snakes);
-            }
+            Console.ReadKey();
         }
 
         private void ShowInfo(Animal animals)
         {
             Console.Clear();
-            Console.WriteLine("В этом вальере у нас - " + animals.Name + " это " + animals.Genger + " их " + animals.Count + " и они " + animals.Voice);
+            
             Console.ReadKey();
         }
     }
